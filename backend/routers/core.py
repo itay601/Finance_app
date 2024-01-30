@@ -2,10 +2,13 @@ from typing import Optional
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker,DeclarativeBase,Mapped,mapped_column
 
+
 DATABASE_URL="sqlite:///my_db"
+
 
 class Base(DeclarativeBase):
     pass
+
 
 class DBUser(Base):
     __tablename__ = "users"
