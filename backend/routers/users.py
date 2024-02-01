@@ -12,12 +12,12 @@ from .core import *
 router = APIRouter(prefix="/users")
 
 
-@router.get("")
+@router.get("/v1")
 @limiter.limit("1/second")
 def massage_user(request:Request):
    return {"masg ":"new user"}
 
-@router.post("")
+@router.post("/v2")
 @limiter.limit("1/second")
 def create_user(request:Request,user_:requset_user,db:Session=Depends(get_db)):
    return {"masg ":"old user"}
