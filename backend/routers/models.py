@@ -2,12 +2,23 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 
-# login user
-class requset_user(BaseModel):
-    id : int
-    mail : str
+# create user
+class req_create_user(BaseModel):
+    id_ : int
     username: str
+    email : str
     password: str
 
-def create_user__(req:requset_user,session:Session):
-    return 0
+class res_create_user(BaseModel):
+    username:str
+    email:str
+
+class req_login_user(BaseModel):
+    username:str
+    password:str
+
+class res_login_user(BaseModel):
+    username:str
+
+class req_reset_password(BaseModel):
+    email:str    
