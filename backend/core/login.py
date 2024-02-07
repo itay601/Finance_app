@@ -14,6 +14,18 @@ hashed_password = hashlib.sha256(password.encode()).hexdigest()
 SECRET_KEY = '@@##sfasfd321'  # Replace with a strong and unique secret key
 TOKEN_EXPIRATION_SECONDS = 3600  # Set the expiration time for the token (e.g., 1 hour)
 
+#######
+from argon2 import PasswordHasher
+ph = PasswordHasher()
+hash = ph.hash("1234")
+print(hash)
+ph.verify(hash, "1234")
+ph.check_needs_rehash(hash)
+ph.verify(hash, "Tr0ub4dor&3")
+#######
+
+
+
 
 def validate_token(token):
     # Add your token validation logic here

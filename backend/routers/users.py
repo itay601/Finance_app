@@ -3,15 +3,20 @@
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
 from fastapi import APIRouter,Request
+from fastapi.security import OAuth2PasswordBearer
 
 from .models import *
 from .limiter import limiter
 from core.login import *
 from core.register import *
 from core.forgot_pass import reset_password_and_send_email
+
+
 router = APIRouter(prefix="/users")
 
 
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 @router.get("/v1")
 @limiter.limit("1/second")
@@ -25,9 +30,18 @@ def login_user(request:Request,user_:req_login_user):
    token = None
    token = login_user_func(user_.username,user_.password) 
    if token:
-      return {"masg ":{"hello user":user_.username}}
+      return {"masg":{"token":token,"hello user":user_.username}}
    return {"msg":"not exist user"}   
 
+
+@router.get('/protected')
+@limiter.limit("1/second")
+async def protect(token: str = Depends(oauth2_scheme)): 
+   valid = validate_token(token)
+   if valid==None:
+      return {"protected file":"very good token works"}
+   return{"something":"went wrong"}  
+  
 
 @router.post("/register")
 @limiter.limit("1/second")
