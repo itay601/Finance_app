@@ -22,3 +22,6 @@ class res_login_user(BaseModel):
 
 class req_reset_password(BaseModel):
     email:str    
+
+class token_model(BaseModel):
+    password:dict

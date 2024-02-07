@@ -14,7 +14,7 @@ hashed_password = hashlib.sha256(password.encode()).hexdigest()
 SECRET_KEY = '@@##sfasfd321'  # Replace with a strong and unique secret key
 TOKEN_EXPIRATION_SECONDS = 3600  # Set the expiration time for the token (e.g., 1 hour)
 
-#######
+'''#######
 from argon2 import PasswordHasher
 ph = PasswordHasher()
 hash = ph.hash("1234")
@@ -23,7 +23,7 @@ ph.verify(hash, "1234")
 ph.check_needs_rehash(hash)
 ph.verify(hash, "Tr0ub4dor&3")
 #######
-
+'''
 
 
 
@@ -32,7 +32,7 @@ def validate_token(token):
     # For example, using PyJWT to decode and verify the token
     try:
         decoded_token = jwt.decode(token, '@@##sfasfd321', algorithms=['HS256'])
-        return decoded_token
+        return decoded_token.payload["user_id"]
     except jwt.ExpiredSignatureError:
         return None  # Token has expired
     except jwt.InvalidTokenError:
