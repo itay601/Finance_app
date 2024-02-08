@@ -9,7 +9,7 @@ from fastapi.encoders import jsonable_encoder
 
 from core.post_content import insert_post_to_blog , show_blog_db
 from core.login import validate_token
-from .models import BlogContent
+from .models import BlogContent,token_model
 from .limiter import limiter
 
 

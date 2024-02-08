@@ -17,8 +17,12 @@ router = APIRouter(prefix="/users")
 
 
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")################
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
+
+
+def token_model(token: str = Depends(oauth2_scheme)):
+    return token
 
 
 
@@ -32,8 +36,8 @@ def msg1(request:Request):
 @limiter.limit("1/second")
 def login_user(request:Request,user_:req_login_user):
    token = None
-   token = login_user_func(user_.username,user_.password) 
-   token_model.password = token 
+   token_model.password  = login_user_func(user_.username,user_.password) 
+   token = token_model.password
    if token:
       return {"masg":{"token":token,"hello user":user_.username}}
    return {"msg":"not exist user"}   
@@ -41,11 +45,11 @@ def login_user(request:Request,user_:req_login_user):
 
 @router.post('/protected')
 @limiter.limit("1/second")
-async def protect(request:Request,token: Annotated[str,Depends(token_model)]):###################### 
-   valid = validate_token(token.password)###########################
-   if valid==None:
+async def protect(request:Request, token: str = Depends(token_model)): 
+   if token==None:
       return{"something":"went wrong"}  
    return {"protected file":"very good token works"}
+
 
 @router.post("/register")
 @limiter.limit("1/second")

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-
+from fastapi.params import Depends
 
 # users
 class req_create_user(BaseModel):

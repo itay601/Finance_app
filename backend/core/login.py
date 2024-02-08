@@ -2,20 +2,15 @@
 import pymysql
 import jwt
 from datetime import datetime, timedelta
+from argon2 import PasswordHasher
+ph = PasswordHasher()
 
 
 SECRET_KEY = '@@##sfasfd321'  # Replace with a strong and unique secret key
 TOKEN_EXPIRATION_SECONDS = 3600  # Set the expiration time for the token (e.g., 1 hour)
 
 #######
-'''from argon2 import PasswordHasher
-ph = PasswordHasher()
-hash = ph.hash("1234")
-print(hash)
-ph.verify(hash, "1234")
-ph.check_needs_rehash(hash)
-ph.verify(hash, "Tr0ub4dor&3")
-ph.check_needs_rehash(hash)'''
+
 
 
 
@@ -24,7 +19,7 @@ def validate_token(token):
     # Add your token validation logic here
     # For example, using PyJWT to decode and verify the token
     try:
-        decoded_token = jwt.decode(token, '@@##sfasfd321', algorithms=['HS256'])
+        decoded_token = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
         return decoded_token.payload["user_id"]
     except jwt.ExpiredSignatureError:
         return None  # Token has expired
@@ -48,6 +43,7 @@ def login_user_func(username, password1):
     print(hash)
     ph.verify(hash,password1)
     ph.check_needs_rehash(hash)
+    #ph.check_needs_rehash(hash)
     host = '127.0.0.1'
     user = 'root'
     password = 'my-secret-pw'
@@ -66,7 +62,7 @@ def login_user_func(username, password1):
         with connection.cursor() as cursor:
             # Check if the username and password match a user in the database
             sql = "SELECT * FROM user WHERE username=%s"
-            cursor.execute(sql, (username , ))
+            cursor.execute(sql, (username))
 
             user_data = cursor.fetchone()
             print(user_data)
@@ -75,6 +71,7 @@ def login_user_func(username, password1):
                 # If user is found, generate and return a token
                 user_id = user_data['id']
                 token = generate_token(user_id)
+                print(token)
                 return token
             else:
                 print("Invalid username or password")
