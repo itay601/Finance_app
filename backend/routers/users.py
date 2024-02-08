@@ -1,10 +1,9 @@
 # routers/users.py
-from typing import Annotated####
+from typing import Annotated
 from fastapi.params import Depends
-#from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session
 from fastapi import APIRouter,Request
-from fastapi.security import OAuth2PasswordBearer#####
-
+from fastapi.security import OAuth2PasswordBearer
 
 from .models import *
 from .limiter import limiter
@@ -19,13 +18,6 @@ router = APIRouter(prefix="/users")
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
-
-
-def token_model(token: str = Depends(oauth2_scheme)):
-    return token
-
-
-
 @router.get("/v1")
 @limiter.limit("1/second")
 def msg1(request:Request):
@@ -36,8 +28,8 @@ def msg1(request:Request):
 @limiter.limit("1/second")
 def login_user(request:Request,user_:req_login_user):
    token = None
-   token_model.password  = login_user_func(user_.username,user_.password) 
-   token = token_model.password
+   token = login_user_func(user_.username,user_.password) 
+   token_model.password = token 
    if token:
       return {"masg":{"token":token,"hello user":user_.username}}
    return {"msg":"not exist user"}   
@@ -45,10 +37,12 @@ def login_user(request:Request,user_:req_login_user):
 
 @router.post('/protected')
 @limiter.limit("1/second")
-async def protect(request:Request, token: str = Depends(token_model)): 
-   if token==None:
-      return{"something":"went wrong"}  
-   return {"protected file":"very good token works"}
+async def protect(request:Request,token: Annotated[str,Depends(token_model)]): 
+   valid = validate_token(token.password)
+   if valid==None:
+      return {"protected file":"very good token works"}
+   return{"something":"went wrong"}  
+  
 
 
 @router.post("/register")

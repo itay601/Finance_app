@@ -14,7 +14,7 @@ hashed_password = hashlib.sha256(password.encode()).hexdigest()
 import argon2
 ph = argon2.PasswordHasher()
 
-'''
+
 def login(db, user, password):
     hash = db.get_password_hash_for_user(user)
 
@@ -26,7 +26,7 @@ def login(db, user, password):
     # rehash the user's password in the database.
     if ph.check_needs_rehash(hash):
         db.set_password_hash_for_user(user, ph.hash(password))
-'''
+
 
 
 
