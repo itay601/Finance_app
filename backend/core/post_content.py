@@ -1,11 +1,10 @@
 #blog functions
 import pymysql
-from pydantic import BaseModel
-from routers.models import BlogContent
 
 
 
-def insert_post_to_blog(blog:BlogContent):
+
+def insert_post_to_blog(blog):
    host = '127.0.0.1'
    user = 'root'
    password = 'my-secret-pw'

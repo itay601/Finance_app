@@ -1,11 +1,11 @@
 #blog content  
-  
 from typing import Annotated####
 from fastapi.params import Depends
 from fastapi import APIRouter,Request
 from datetime import datetime, timedelta
- #datetime.utcnow()
 from fastapi.encoders import jsonable_encoder
+from fastapi.security import OAuth2PasswordBearer
+
 
 from core.post_content import insert_post_to_blog , show_blog_db
 from core.login import validate_token
@@ -14,8 +14,11 @@ from .limiter import limiter
 
 
 
+
 router = APIRouter(prefix="/blog")
 
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 
 @router.get("/blog")
