@@ -9,5 +9,15 @@ CREATE TABLE user(
    PRIMARY KEY(ID)
 );
 
-insert into user(Id,username,email,password)
-values(0 , "itay" , "i@walla.com " , "pass");
+CREATE TABLE  blog_posts(
+    name TEXT(30)NOT NULL ,
+    title TEXT(100) NOT NULL,
+    content TEXT(1000) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+insert into user(id,username,email,password)
+values(0 , 'itay' , 'i@walla.com' , 'pass');
+
+insert into blog_posts(name,title,content)
+values('itay' , 'blog is cool', 'thats why' );

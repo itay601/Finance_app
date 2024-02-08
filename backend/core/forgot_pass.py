@@ -62,11 +62,15 @@ def reset_password_and_send_email(email):
             if user_data:
                 # Generate a new random password
                 new_password = generate_random_password()
+                hash = ph.hash(new_password)
+                print(hash)
+                ph.verify(hash, new_password)
+                ph.check_needs_rehash(hash)
                 username= user_data['username']
 
                 # Update the user's password in the database
                 sql_update_password = "UPDATE user SET password=%s WHERE username=%s"
-                cursor.execute(sql_update_password, (new_password, username))
+                cursor.execute(sql_update_password, (hash, username))
 
                 # Send the new password to the user's email
                 receiver_email = user_data['email']

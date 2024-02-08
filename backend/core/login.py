@@ -3,27 +3,20 @@ import pymysql
 import jwt
 from datetime import datetime, timedelta
 
-##exmple
-############## hash -256
-import hashlib
-password ="1234"
-hashed_password = hashlib.sha256(password.encode()).hexdigest()
-#print(hashed_password)
-#############
 
 SECRET_KEY = '@@##sfasfd321'  # Replace with a strong and unique secret key
 TOKEN_EXPIRATION_SECONDS = 3600  # Set the expiration time for the token (e.g., 1 hour)
 
-'''#######
-from argon2 import PasswordHasher
+#######
+'''from argon2 import PasswordHasher
 ph = PasswordHasher()
 hash = ph.hash("1234")
 print(hash)
 ph.verify(hash, "1234")
 ph.check_needs_rehash(hash)
 ph.verify(hash, "Tr0ub4dor&3")
-#######
-'''
+ph.check_needs_rehash(hash)'''
+
 
 
 
@@ -38,6 +31,8 @@ def validate_token(token):
     except jwt.InvalidTokenError:
         return None  # Invalid token
 
+
+
 def generate_token(user_id):
     payload = {
         'user_id': user_id,
@@ -48,7 +43,11 @@ def generate_token(user_id):
 
 
 
-def login_user_func(username, password):
+def login_user_func(username, password1):
+    hash = ph.hash(password1)
+    print(hash)
+    ph.verify(hash,password1)
+    ph.check_needs_rehash(hash)
     host = '127.0.0.1'
     user = 'root'
     password = 'my-secret-pw'

@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 
-# create user
+# users
 class req_create_user(BaseModel):
     id_ : int
     username: str
@@ -25,3 +25,11 @@ class req_reset_password(BaseModel):
 
 class token_model(BaseModel):
     password:dict
+###################################
+# blog
+class BlogContent(BaseModel):
+    name:str 
+    title:str
+    body:str 
+
+   
