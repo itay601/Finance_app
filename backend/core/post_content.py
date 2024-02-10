@@ -4,7 +4,7 @@ import pymysql
 
 
 
-def insert_post_to_blog(blog):
+def insert_post_to_blog(name,title,body):
    host = '127.0.0.1'
    user = 'root'
    password = 'my-secret-pw'
@@ -21,8 +21,8 @@ def insert_post_to_blog(blog):
 
    try:
         with connection.cursor() as cursor:
-            sql = "INSERT INTO blog_posts(id, title, content) VALUES (%s, %s, %s)"
-            values = (blog.name,blog.title,blog.body)
+            sql = "INSERT INTO blog_posts(name, title, content) VALUES (%s, %s, %s)"
+            values = (name,title,body)
 
             cursor.execute(sql, values)
 
@@ -33,6 +33,7 @@ def insert_post_to_blog(blog):
 
    except pymysql.Error as e:
         print(f"Database error: {e}")
+        return None
 
    finally:
         connection.close()
