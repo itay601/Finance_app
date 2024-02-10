@@ -19,7 +19,7 @@ router = APIRouter(prefix="/users")
 
 
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 
 
 @router.get("/v1")
@@ -36,7 +36,7 @@ def login_user(request:Request,user_:req_login_user):
    token_model.password = token 
    if token:
       print(oauth2_scheme)
-      return {"masg":{"token":token,"hello user":user_.username}}
+      return {"access_token": token, "token_type": "bearer"}
    return {"msg":"not exist user"}   
 
 
@@ -48,15 +48,14 @@ def register(request:Request,req:req_create_user):
    if register_check:
       return{"msg":"working man"}
    return{"msg":"something happend try Again"}   
-    
-
-
+   
 
 
 #only users can do this functions
 @router.post('/protected')
 @limiter.limit("1/second")
 async def protect(request:Request,token: Annotated[str,Depends(token_model)]): 
+   print (token)
    valid = validate_token(token.password)
    if valid==None:
       return {"protected file":"very good token works"}
