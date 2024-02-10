@@ -18,3 +18,7 @@ def get_articles(request:Request,arti :Articles):
     print(data)
     return {"articles":data}
 
+'''=("AAPL"|"MSFT"|"AMZN"|"GOOGL"|"FB"|"TSLA"|"JNJ"|"JPM"|
+                       "V"|"PG"|"SBUX"|"COST"|"PEP"|"CMCSA"|"MAR"|"BKNG"|
+                       "DLTR"|"AVGO"|"TMUS"|"KHC")'''
+#"articles""date""title""content"                       

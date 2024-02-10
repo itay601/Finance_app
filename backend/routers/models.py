@@ -34,7 +34,5 @@ class BlogContent(BaseModel):
 ###############################3
 # articles api
 class Articles(BaseModel):
-    company_name:str =("AAPL"|"MSFT"|"AMZN"|"GOOGL"|"FB"|"TSLA"|"JNJ"|"JPM"|
-                       "V"|"PG"|"SBUX"|"COST"|"PEP"|"CMCSA"|"MAR"|"BKNG"|
-                       "DLTR"|"AVGO"|"TMUS"|"KHC")
+    company_name:str 
     limit :str   

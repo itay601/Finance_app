@@ -14,9 +14,9 @@ app.include_router(blog_router)
 app.include_router(finance_new_aricles)
 
 
-@app.get("/")
-def root():
-    return Response("server is running")
+@app.get("/root")
+async def root():
+    return {"message":"server is running"}
 
 
 
