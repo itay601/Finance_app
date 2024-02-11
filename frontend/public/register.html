@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<form method="POST" action="/register.html">
+    <h2>User Registration</h2>
+    <label for="id">ID:</label>
+    <input type="number" id="id" name="id" pattern="[0-9]*" inputmode="numeric" required>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password (at least 8 characters, including uppercase, lowercase, and a number):</label>
+    <input type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one number." required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <button type="submit">Register</button>
+    <br>
+    <br>
+    
+    
+</form>
+
+<div id="navigation">
+    <button><a href="login.html">Login page</a></button>
+    <button><a href="index.html">Index page</a></button>
+    <button><a href="forgot_password.html">Forgot Password</a></button>
+</div>
+
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // You can add your validation and user registration logic here.
+        // For simplicity, let's just log the form data to the console.
+        console.log('Username:', document.getElementById('username').value);
+        console.log('Password:', document.getElementById('password').value);
+        console.log('Email:', document.getElementById('email').value);
+
+        // Reset the form
+        this.reset();
+    });
+</script>
+
+</body>
+</html>

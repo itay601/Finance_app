@@ -25,7 +25,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 @router.get("/v1")
 @limiter.limit("1/second")
 def msg1(request:Request):
-   return {"masg ":"new user"}
+   return {"message ":"new user"}
 
 
 @router.post("/login")
