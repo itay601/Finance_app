@@ -28,7 +28,7 @@ const UserV1 = () =>{
 
     return(
         <div>
-            <h1>UserV1, message from backend:  {message}</h1>
+            <h1>if you are {message} you need register first</h1>
         </div>
     );
 };
