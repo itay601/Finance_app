@@ -1,41 +1,21 @@
 import React, { useEffect, useState } from "react";
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import UserLogin from "./components/UserLogin";
+import UserV1 from "./components/UserV1";
+import Root from "./components/Root";
 
 
 const App = () =>{
-    const [message,setMessage] = useState("");
-
-    const getRootMessage = async () =>{
-       const requestOptions ={
-        method:"GET",
-        headers:{
-            "Conten-Type":"application/json",
-        },
-       };
-       const response = await fetch("/root",requestOptions);
-       const data = await response.json();
-
-       if(!response.ok){
-        console.log("mess-up");
-       }else{
-        setMessage(data.message);
-       }
-    };
-
-    useEffect(() => {
-        getRootMessage();
-    }, []);
 
     return(
-        <div>
-            <h1>App.jsx , message from backend:  {message}</h1>
-        </div>
+    <Router>
+      <Switch>
+        <Route exact path="/root" component={Root} />
+        <Route path="/users/v1" component={UserV1} />
+        <Route path="/users/login" component={UserLogin} />
+      </Switch>
+    </Router>
     );
-
-
-    
 };
-
-
 
 export default App;

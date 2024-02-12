@@ -12,7 +12,7 @@ const UserLogin = () =>{
             "Conten-Type":"application/json",
         },
        };
-       const response = await fetch('/users/v1',requestOptions);
+       const response = await fetch('/users/login',requestOptions);
        const data = await response.json();
        
 
@@ -30,7 +30,7 @@ const UserLogin = () =>{
 
     return(
         <div>
-            <h1>user_login.jsx , message from backend {userLoginMsg}</h1>
+            <h1>user_login.jsx , message from backend: {userLoginMsg}</h1>
         </div>
     );
 };
