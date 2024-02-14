@@ -1,9 +1,9 @@
 # routers/users.py
 # global modules
 from typing import Annotated ,Optional
+from fastapi import APIRouter, Request
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
-from fastapi import APIRouter, Request
 from fastapi.security import OAuth2PasswordBearer, oauth2
 
 # from my project
@@ -24,18 +24,10 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 @router.get("/v1")
 def msg1(request: Request):
     print(request)
-    return Message(msg="new user")
+    return {"message":"new user"}
 
 
-@router.post("/login")
-def login_user(request: Request, user_: req_login_user):
-    token = None
-    token = login_user_func(user_.username, user_.password)
-    token_model.password = token
-    if token:
-        print(oauth2_scheme)
-        return Message(msg="login successfully")
-    return {"msg": "not exist user"}
+
 
 
 

@@ -50,3 +50,38 @@ class Stocks_Request(BaseModel):
 '''{"AAPL","MSFT","AMZN","GOOGL","FB","TSLA","JNJ","JPM",
                        "V","PG","SBUX","COST","PEP","CMCSA","MAR","BKNG",
                        "DLTR","AVGO","TMUS","KHC"}   '''
+                       
+                       
+                       
+#calculators
+class RetirementPlannerInput(BaseModel):
+    current_age: int
+    retirement_age: int
+    annual_salary: float
+    current_savings: float
+    monthly_contribution: float
+    annual_return: float
+
+class RetirementPlannerOutput(BaseModel):
+    retirement_savings: float
+    monthly_contribution_needed: float                       
+
+
+class LoanCalculatorInput(BaseModel):
+    principal: float
+    interest_rate: float
+    months: int
+
+class LoanCalculatorOutput(BaseModel):
+    monthly_payment: float
+    total_payment: float
+    total_interest: float
+
+class SavingsCalculatorInput(BaseModel):
+    initial_amount: float
+    monthly_deposit: float
+    interest_rate: float
+    months: int
+
+class SavingsCalculatorOutput(BaseModel):
+    total_savings: float    
