@@ -25,7 +25,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 @router.get("/v1")
 def msg1(request: Request):
     print(request)
-    #return Message(msg="working man").dict()
+    #return Message(msg='working man').dict().json()
     return {"message":"new user"}
 
 

@@ -16,7 +16,6 @@ const UserV1 = () => {
         const data = await response.json();
 
         console.log(data)
-        console.log("aaaaaaa")
         console.log(response)
 
         if (response.ok !== true) {
