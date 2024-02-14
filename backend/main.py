@@ -3,6 +3,7 @@ from routers.users import router as users_router
 from routers.blog_content import router as blog_router
 from routers.finance_articles_api import router as aricles_router
 from routers.stocks_api import router as stock_router
+from routers.calculators import router as cal_router
 
 from routers.limiter import limiter 
 
@@ -14,6 +15,7 @@ app.include_router(users_router)
 app.include_router(blog_router)
 app.include_router(aricles_router)
 app.include_router(stock_router)
+app.include_router(cal_router)
 
 
 

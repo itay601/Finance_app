@@ -5,6 +5,7 @@ from fastapi import APIRouter, Request
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordBearer, oauth2
+from json import JSONEncoder
 
 # from my project
 from .models import *
@@ -24,6 +25,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 @router.get("/v1")
 def msg1(request: Request):
     print(request)
+    #return Message(msg="working man").dict()
     return {"message":"new user"}
 
 
