@@ -34,8 +34,9 @@ const UserV1 = () => {
 
     return (
         <div>
-            <h1>if you are: {message} , you need register first</h1>
+            <h1>if you are: {message}, you need register first</h1>
         </div>
     );
 };
+
 export default UserV1;

@@ -20,16 +20,12 @@ router = APIRouter(prefix="/blog")
 
 @router.get("/content")
 async def content_blog(request:Request):
-    valid = validate_token(token.password)
-    if valid==None:    
-       return {"msg":"login before creating content"}
     blog = show_blog_db()
     blog_content = jsonable_encoder(blog)
-    return blog_content
+    return {"content":blog_content}
     
 
 @router.post('/create_post')
-@limiter.limit("1/second")
 async def blog_create(request:Request, blog :BlogContent,token: Annotated[str,Depends(token_model)]):
     inserted = None
     inserted = insert_post_to_blog(blog.name,blog.title,blog.body)
