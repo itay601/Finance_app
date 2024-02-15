@@ -35,8 +35,9 @@ async def savings_calculator(request: Request,input_data: SavingsCalculatorInput
     for _ in range(months):
         total_savings *= 1 + interest_rate
         total_savings += monthly_deposit
-    return SavingsCalculatorOutput(total_savings=total_savings).dict()
-
+    #return SavingsCalculatorOutput(total_savings=total_savings).dict()
+    response_msg = f"Total savings: {total_savings:.3f}"
+    return { "msg" : response_msg }
 
 
 @router.post("/retirement_planner")

@@ -24,6 +24,7 @@ const UserV1 = () => {
             console.log("i am a genuis")
             console.log(data.message)
             setMessage(data.message);
+            
         }
     };
 

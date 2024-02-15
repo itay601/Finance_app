@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="theme-color" content="#000000"/>
   
-  <title>Finance News</title>
+  <title>Finance calculator</title>
 
   <style>
     body {
@@ -54,27 +54,26 @@
 
 <body>
     <header>
-        <img src="your-logo.png" alt="Finance News Logo">
-        <h1>Finance News</h1>
+        <h1>Finance calculator</h1>
     </header>
-  <div id="index"></div>
-  <h1>Tech & Finance newest articles from all over the world</h1>
-  <p>Here you can find the newest finance articles from all over the world 
-    and talk about them with everyone .</p>
+  
+  <h1>Finance calculator</h1>
+  <h2>loan Calculator </h2>
+  
 </body>
 
-<form  method="GET" action="/">
-   
-    <button type="submit">Check Server</button>
-    
+<form id="loanCalculatorForm" method="POST" action="/calculators/loan_calculator"  onSubmit={handleSubmit}>
+    <label htmlFor="principal">Principal:</label>
+    <input type="number" id="principal" name="principal" required />
+    <label htmlFor="interestRate">Interest Rate:</label>
+    <input type="number" id="interestRate" name="interestRate" required />
+    <label htmlFor="months">Months:</label>
+    <input type="number" id="months" name="months" required />
+    <button type="submit">Calculate Loan</button>
 </form>
 
 
-
-
 <div id="navigation">
-    <button><a href="register.html">Register page</a></button>
-    <button><a href="forgot_password.html">Forgot Password</a></button>
-    <button><a href="calculator.html">Calculator</a></button>
+    <button><a href="index.html">Index page</a></button>
 </div>
 </html>
