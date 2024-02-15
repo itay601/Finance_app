@@ -19,22 +19,29 @@ const Loan = () => {
             body: JSON.stringify({ principal, interest_rate: interestRate, months }),
         };
 
-        try {
-            const response = await fetch("/calculators/loan_calculator", requestOptions);
-            if (!response.ok) {
-                throw new Error("Failed to fetch data");
+        
+        const response = await fetch("/calculators/loan_calculator", requestOptions);
+            
+        const data = await response.json();
+        console.log(data)
+        console.log(response)
+
+        if (response.ok !== true) {
+                console.log("mess-up");
+        } 
+        else {
+                console.log("i am a genuis")
+                console.log(data.message)
+                console.log(data)
+                setResult(data);
+            
             }
-            const data = await response.json();
-            setResult(data);
-        } catch (error) {
-            console.error("Error:", error);
-        }
     };
 
     return (
         <div>
             <h1>Loan Calculator</h1>
-            <form id="loanCalculatorForm" method="GET" action="/calculators/loan_calculator"  onSubmit={handleSubmit}>
+            <form id="loanCalculatorForm" method="POST" action="/calculators/loan_calculator"  onSubmit={handleSubmit}>
                 <label htmlFor="principal">Principal:</label>
                 <input type="number" id="principal" name="principal" required />
                 <label htmlFor="interestRate">Interest Rate:</label>

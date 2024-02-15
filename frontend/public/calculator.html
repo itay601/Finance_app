@@ -62,18 +62,19 @@
   
 </body>
 
-<form id="loanCalculatorForm" method="POST" action="/calculators/loan_calculator"  onSubmit={handleSubmit}>
-    <label htmlFor="principal">Principal:</label>
-    <input type="number" id="principal" name="principal" required />
-    <label htmlFor="interestRate">Interest Rate:</label>
-    <input type="number" id="interestRate" name="interestRate" required />
-    <label htmlFor="months">Months:</label>
-    <input type="number" id="months" name="months" required />
-    <button type="submit">Calculate Loan</button>
-</form>
+<h1>Loan Calculator</h1>
+            <form id="loanCalculatorForm" method="POST" action="/calculators/loan_calculator"  onSubmit={handleSubmit}>
+                <label htmlFor="principal">Principal:</label>
+                <input type="number" id="principal" name="principal" required />
+                <label htmlFor="interestRate">Interest Rate:</label>
+                <input type="number" id="interestRate" name="interestRate" required />
+                <label htmlFor="months">Months:</label>
+                <input type="number" id="months" name="months" required />
+                <button type="submit">Calculate Loan</button>
+            </form>
 
 
 <div id="navigation">
-    <button><a href="index.html">Index page</a></button>
+    <button><a href="index">Index page</a></button>
 </div>
 </html>
