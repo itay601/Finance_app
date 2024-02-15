@@ -1,12 +1,13 @@
 from fastapi.testclient import TestClient
-from routers.main import app
+from backend.main import app
+import pytest 
+
 
 client = TestClient(app)
 
-def setup_function():
-    todos.clear()
     
 def test_root():
     response = client.get("/root")
-    assert response.status_code==200    
-    assert response.json()=={"message":"server is running"}
+    assert response.status_code==200  
+    print(response.json())  
+    assert response.json()== {"message":"server is running"}
