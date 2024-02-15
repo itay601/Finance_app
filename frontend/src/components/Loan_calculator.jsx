@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const Loan = () => {
     const [result, setResult] = useState(null);
 
@@ -39,6 +40,7 @@ const Loan = () => {
     };
 
     return (
+        
         <div>
             <h1>Loan Calculator</h1>
             <form id="loanCalculatorForm" method="POST" action="/calculators/loan_calculator"  onSubmit={handleSubmit}>

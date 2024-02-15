@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from typing import Annotated ,Optional
 from fastapi import APIRouter, Request
+import numpy as np
 ###
 from .models import *
 
@@ -16,8 +17,10 @@ async def loan_calculator(request: Request,input_data: LoanCalculatorInput):
     principal = input_data.principal
     interest_rate = input_data.interest_rate / 100 / 12  # Monthly interest rate
     months = input_data.months
-
-    monthly_payment = (principal * interest_rate) / (1 - (1 + interest_rate) ** - months)
+    try:
+        monthly_payment = (principal * interest_rate) / (1 - (1 + interest_rate) ** - months)
+    except np.Error as e:
+        print(f"division by zero: {e}")
     total_payment = monthly_payment * months
     total_interest = total_payment - principal
     return LoanCalculatorOutput(monthly_payment=monthly_payment, total_payment=total_payment, total_interest=total_interest).dict()
@@ -35,9 +38,8 @@ async def savings_calculator(request: Request,input_data: SavingsCalculatorInput
     for _ in range(months):
         total_savings *= 1 + interest_rate
         total_savings += monthly_deposit
-    #return SavingsCalculatorOutput(total_savings=total_savings).dict()
-    response_msg = f"Total savings: {total_savings:.3f}"
-    return { "msg" : response_msg }
+    return SavingsCalculatorOutput(total_savings=total_savings).dict()
+
 
 
 @router.post("/retirement_planner")

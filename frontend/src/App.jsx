@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Root from "./components/Root";
 import UserV1 from "./components/UserV1";
 import Loan from './components/Loan_calculator';
-import Header from './components/header';
+
 
 
 
@@ -22,6 +22,8 @@ const App = () =>{
   );
   
 };
+
+
 
 
 
