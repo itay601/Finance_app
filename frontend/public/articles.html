@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#000000"/>
+  
+  <title>News</title>
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    header {
+        background-color: #0066cc;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+    header img {
+        max-width: 100%;
+        height: auto;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .articles {
+        margin-top: 20px;
+    }
+    .article {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    .article:last-child {
+        border-bottom: none;
+    }
+    .article h2 {
+        margin-top: 0;
+        font-size: 18px;
+    }
+    .article p {
+        margin-bottom: 0;
+    }
+    select {
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+
+<body>
+    <header>
+        <h1>Finance Articles News</h1>
+    </header>
+    <div class="container">
+       
+        <form method="GET" action="/news/article">
+            <label for="company">Choose a Company:</label>
+            <select id="company" name="company">
+                <option value="AAPL">Apple</option>
+                <option value="MSFT">Microsoft</option>
+                <option value="AMZN">Amazon</option>
+                <option value="GOOGL">Google</option>
+                <option value="FB">Facebook</option>
+                <option value="TSLA">Tesla</option>
+                <option value="JNJ">Johnson & Johnson</option>
+                <option value="JPM">JPMorgan Chase</option>
+                <option value="V">Visa</option>
+                <option value="PG">Procter & Gamble</option>
+                <option value="SBUX">Starbucks</option>
+                <option value="COST">Costco</option>
+                <option value="PEP">PepsiCo</option>
+                <option value="CMCSA">Comcast</option>
+                <option value="MAR">Marriott International</option>
+                <option value="BKNG">Booking Holdings</option>
+                <option value="DLTR">Dollar Tree</option>
+                <option value="AVGO">Broadcom</option>
+                <option value="TMUS">T-Mobile US</option>
+                <option value="KHC">Kraft Heinz</option>
+            </select>
+           
+            <label for="limit">Limit:</label>
+            <input type="number" id="limit" name="limit" required />
+           
+            <button type="submit">Articles Render</button>
+        </form>
+    </div>
+    <div id="articles"></div>
+    <h1>Tech & Finance newest articles from all over the world</h1>
+    <p>Here you can find the newest finance articles from all over the world 
+        and talk about them with everyone .</p>
+
+  
+
+    <div id="navigation">
+        <button><a href="/index.html">Home</a></button>
+    </div>
+</body>
+</html>

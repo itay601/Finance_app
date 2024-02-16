@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from fastapi.params import Depends
 from typing import Optional
+from typing import List
 
 #RESPONSES
 #massages responses
@@ -46,7 +47,14 @@ class Articles(BaseModel):
 class Stocks_Request(BaseModel):
     stock_ : str 
 
-
+# Define a pydantic model for the articles
+class Article(BaseModel):
+    date: str
+    title: str
+    content: str
+    link: str
+    symbols: List[str]
+    
 '''{"AAPL","MSFT","AMZN","GOOGL","FB","TSLA","JNJ","JPM",
                        "V","PG","SBUX","COST","PEP","CMCSA","MAR","BKNG",
                        "DLTR","AVGO","TMUS","KHC"}   '''
