@@ -22,12 +22,6 @@ router = APIRouter(prefix="/users")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 
 
-@router.get("/v1")
-def msg1(request: Request):
-    print(request)
-    # return Message(msg='working man')
-    return {"message": "new user"}
-
 
 @router.post("/register")
 def register(request: Request, req: req_create_user):

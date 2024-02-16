@@ -32,10 +32,10 @@ def login(db, user, password):
 
 def register_new_user(id_, username, email, password1):
     # hashing
-    #hash = ph.hash(password1)
-    #print(hash)
-    #ph.verify(hash, password1)
-    #ph.check_needs_rehash(hash)
+    # hash = ph.hash(password1)
+    # print(hash)
+    # ph.verify(hash, password1)
+    # ph.check_needs_rehash(hash)
 
     # connecting db insert user
     host = "127.0.0.1"
