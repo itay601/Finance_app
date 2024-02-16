@@ -4,48 +4,56 @@ from fastapi.params import Depends
 from typing import Optional
 from typing import List
 
-#RESPONSES
-#massages responses
+
+# RESPONSES
+# massages responses
 class Message(BaseModel):
-   msg: str
+    msg: str
+
 
 class Stock(BaseModel):
-   stock: dict
+    stock: dict
 
-#REQUESTS
+
+# REQUESTS
 # users
 class req_create_user(BaseModel):
-    id_ : int
+    id_: int
     username: str
-    email : str
+    email: str
     password: str
 
 
-
 class req_login_user(BaseModel):
-    username:str
-    password:str
+    username: str
+    password: str
+
 
 class req_reset_password(BaseModel):
-    email:str    
+    email: str
+
 
 class token_model(BaseModel):
-    password:dict
+    password: dict
+
 
 # blog
 class BlogContent(BaseModel):
-    name:str 
-    title:str
-    body:str 
+    name: str
+    title: str
+    body: str
+
 
 # articles api
 class Articles(BaseModel):
-    company_name:str 
-    limit :str 
-      
+    company_name: str
+    limit: str
+
+
 # stocks
 class Stocks_Request(BaseModel):
-    stock_ : str 
+    stock_: str
+
 
 # Define a pydantic model for the articles
 class Article(BaseModel):
@@ -54,14 +62,14 @@ class Article(BaseModel):
     content: str
     link: str
     symbols: List[str]
-    
-'''{"AAPL","MSFT","AMZN","GOOGL","FB","TSLA","JNJ","JPM",
+
+
+"""{"AAPL","MSFT","AMZN","GOOGL","FB","TSLA","JNJ","JPM",
                        "V","PG","SBUX","COST","PEP","CMCSA","MAR","BKNG",
-                       "DLTR","AVGO","TMUS","KHC"}   '''
-                       
-                       
-                       
-#calculators
+                       "DLTR","AVGO","TMUS","KHC"}   """
+
+
+# calculators
 class RetirementPlannerInput(BaseModel):
     current_age: int
     retirement_age: int
@@ -70,9 +78,10 @@ class RetirementPlannerInput(BaseModel):
     monthly_contribution: float
     annual_return: float
 
+
 class RetirementPlannerOutput(BaseModel):
     retirement_savings: float
-    monthly_contribution_needed: float                       
+    monthly_contribution_needed: float
 
 
 class LoanCalculatorInput(BaseModel):
@@ -80,10 +89,12 @@ class LoanCalculatorInput(BaseModel):
     interest_rate: float
     months: int
 
+
 class LoanCalculatorOutput(BaseModel):
     monthly_payment: float
     total_payment: float
     total_interest: float
+
 
 class SavingsCalculatorInput(BaseModel):
     initial_amount: float
@@ -91,5 +102,6 @@ class SavingsCalculatorInput(BaseModel):
     interest_rate: float
     months: int
 
+
 class SavingsCalculatorOutput(BaseModel):
-    total_savings: float    
+    total_savings: float

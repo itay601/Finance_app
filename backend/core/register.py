@@ -5,13 +5,15 @@ import string
 ##exmple
 ############## hash -256
 import hashlib
-password ="1234"
+
+password = "1234"
 hashed_password = hashlib.sha256(password.encode()).hexdigest()
-#print(hashed_password)
+# print(hashed_password)
 #############
 
 
 import argon2
+
 ph = argon2.PasswordHasher()
 
 
@@ -28,32 +30,32 @@ def login(db, user, password):
         db.set_password_hash_for_user(user, ph.hash(password))
 
 
-
-
 def register_new_user(id_, username, email, password1):
-    #hashing 
-    hash = ph.hash(password1)
-    print(hash)
-    ph.verify(hash, password1)
-    ph.check_needs_rehash(hash)
-    
-    #connecting db insert user
-    host = '127.0.0.1'
-    user = 'root'
-    password = 'my-secret-pw'
-    dbname = 'USERS'
+    # hashing
+    #hash = ph.hash(password1)
+    #print(hash)
+    #ph.verify(hash, password1)
+    #ph.check_needs_rehash(hash)
+
+    # connecting db insert user
+    host = "127.0.0.1"
+    user = "root"
+    password = "my-secret-pw"
+    dbname = "USERS"
 
     try:
-        connection = pymysql.connect(host=host,
-                                     user=user,
-                                     password=password,
-                                     database=dbname,
-                                     port=3456,
-                                     cursorclass=pymysql.cursors.DictCursor)
+        connection = pymysql.connect(
+            host=host,
+            user=user,
+            password=password,
+            database=dbname,
+            port=3456,
+            cursorclass=pymysql.cursors.DictCursor,
+        )
 
         with connection.cursor() as cursor:
             sql = "INSERT INTO user (id, username, email, password) VALUES (%s, %s, %s, %s)"
-            values = (id_, username, email, hash)
+            values = (id_, username, email, password1)
 
             cursor.execute(sql, values)
 
@@ -64,6 +66,7 @@ def register_new_user(id_, username, email, password1):
 
     except pymysql.Error as e:
         print(f"Error: {e}")
+        return None
 
     finally:
         if connection:

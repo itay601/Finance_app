@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 
 
-const UserV1 = () => {
+const UserRegister = () => {
     const [message, setMessage] = useState("");
 
     const getRootMessage = async () => {
@@ -12,7 +12,7 @@ const UserV1 = () => {
                 "Content-Type": "application/json",
             },
         };
-        const response = await fetch("/users/v1", requestOptions);
+        const response = await fetch("/users/register", requestOptions);
         const data = await response.json();
 
         console.log(data)
@@ -21,7 +21,6 @@ const UserV1 = () => {
         if (response.ok !== true) {
             console.log("mess-up");
         } else {
-            console.log("i am a genuis")
             console.log(data.message)
             setMessage(data.message);
             
@@ -34,9 +33,9 @@ const UserV1 = () => {
 
     return (
         <div>
-            <h1>if you are: {message}, you need register first</h1>
+            <h1>register successfully , {message}</h1>
         </div>
     );
 };
 
-export default UserV1;
+export default UserRegister;

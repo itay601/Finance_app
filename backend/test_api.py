@@ -1,9 +1,7 @@
 import requests
 
 
-
-
-'''#EODHD api 
+"""#EODHD api 
 #news about apple
 #AAPL
 YOUR_API_TOKEN = "65c223a456a3f2.38480002"
@@ -46,7 +44,7 @@ print(data)
 #PG
 url = f'https://eodhd.com/api/news?s=PG.US&offset=0&limit=1&api_token=65c223a456a3f2.38480002&fmt=json'
 data = requests.get(url).json()
-print(data)'''
+print(data)"""
 
 """#SBUX
 YOUR_API_TOKEN = "65c223a456a3f2.38480002"
@@ -90,9 +88,3 @@ print(data)
 url = f'https://eodhd.com/api/news?s=KHC.US&offset=0&limit=1&api_token=65c223a456a3f2.38480002&fmt=json'
 data = requests.get(url).json()
 print(data)"""
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 # routers/users.py
 # global modules
-from typing import Annotated ,Optional
+from typing import Annotated, Optional
 from fastapi import APIRouter, Request
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
@@ -25,22 +25,20 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 @router.get("/v1")
 def msg1(request: Request):
     print(request)
-    #return Message(msg='working man')
-    return {"message":"new user"}
-
-
+    # return Message(msg='working man')
+    return {"message": "new user"}
 
 
 @router.post("/register")
 def register(request: Request, req: req_create_user):
-   register_check = None
-   register_check = register_new_user(req.id_, req.username, req.email, req.password)
-   if register_check: 
-        #return Message(msg="working man")
-        return { "msg" : "register successfuly" }
-   else:
-        #return Message(msg="something happend try Again")
-        return { "msg" : "not register try again." }
+    register_check = None
+    register_check = register_new_user(req.id_, req.username, req.email, req.password)
+    if register_check:
+        # return Message(msg="working man")
+        return {"msg": "register successfuly"}
+    else:
+        # return Message(msg="something happend try Again")
+        return {"msg": "not register try again."}
 
 
 # only users can do this functions
