@@ -33,7 +33,7 @@ def register(request: Request, req: req_create_user):
 
 
 #change it to rest password with email
-@router.post("/protected")
+@router.post("/reset_password")
 async def protect(request: Request, token: Annotated[str, Depends(token_model)]):
     print(token)
     valid = validate_token(token.password)

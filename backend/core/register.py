@@ -12,30 +12,11 @@ hashed_password = hashlib.sha256(password.encode()).hexdigest()
 #############
 
 
-import argon2
 
-ph = argon2.PasswordHasher()
-
-
-def login(db, user, password):
-    hash = db.get_password_hash_for_user(user)
-
-    # Verify password, raises exception if wrong.
-    ph.verify(hash, password)
-
-    # Now that we have the cleartext password,
-    # check the hash's parameters and if outdated,
-    # rehash the user's password in the database.
-    if ph.check_needs_rehash(hash):
-        db.set_password_hash_for_user(user, ph.hash(password))
 
 
 def register_new_user(id_, username, email, password1):
-    # hashing
-    # hash = ph.hash(password1)
-    # print(hash)
-    # ph.verify(hash, password1)
-    # ph.check_needs_rehash(hash)
+    
 
     # connecting db insert user
     host = "127.0.0.1"

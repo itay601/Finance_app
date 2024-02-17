@@ -18,7 +18,7 @@ def get_stocks(request: Request, stocks: Stocks_Request):
     return data
 
 #a lot of data bursa for the company
-@router.post("/realTime")
+@router.post("/real_time")
 def realtime_data_company(request: Request, stocks: Stocks_Request):
     url = f"https://eodhd.com/api/real-time/{stocks.stock_}.US?s=VTI,EUR.FOREX&api_token={YOUR_API_TOKEN}&fmt=json"
     data = requests.get(url).json()
