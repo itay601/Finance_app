@@ -7,7 +7,7 @@ const Article = () => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const companyName = formData.get('company_name');
+    const companyName = formData.get('company');
     const limit = formData.get('limit');
 
     const requestOptions = {
@@ -20,10 +20,16 @@ const Article = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/news/article', requestOptions);
+      const response = await fetch('/news/article', requestOptions);
       const data = await response.json();
-      console.log(data)
-      setArticles(data.articles);
+      console.log(data);
+      // Extracting required fields from the response data
+      const extractedArticles = data.map(article => ({
+        title: article.title,
+        content: article.content,
+        link: article.link
+      }));
+      setArticles(extractedArticles);
     } catch (error) {
       console.error('Error fetching articles:', error);
     }

@@ -15,7 +15,7 @@ def get_articles(request: Request, arti: Articles):
     url = f"https://eodhd.com/api/news?s={arti.company_name}.US&offset=0&limit={arti.limit}&api_token={YOUR_API_TOKEN}&fmt=json"
     data = requests.get(url).json()
     print(data)
-    return {"articles": data}
+    return data
 
 
-# "articles""date""title""content"
+# "articles""date""title""content""link"

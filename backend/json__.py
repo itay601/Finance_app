@@ -1,6 +1,6 @@
 
 {
-    "articles": [
+    [
         {
             "date": "2024-02-16T12:01:14+00:00",
             "title": "Warren Buffett Bolsters Stake in Chevron Corp",
