@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const NewsComponent = () => {
+const Article = () => {
   const [articles, setArticles] = useState([]);
 
   const handleSubmit = async (event) => {
@@ -33,8 +33,29 @@ const NewsComponent = () => {
     <div>
       <h1>Fetch News Articles</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="company_name">Company Name:</label>
-        <input type="text" id="company_name" name="company_name" required />
+      <label htmlFor="company">Choose a Company:</label>
+                <select id="company" name="company">
+                    <option value="AAPL">Apple</option>
+                    <option value="MSFT">Microsoft</option>
+                    <option value="AMZN">Amazon</option>
+                    <option value="GOOGL">Google</option>
+                    <option value="FB">Facebook</option>
+                    <option value="TSLA">Tesla</option>
+                    <option value="JNJ">Johnson & Johnson</option>
+                    <option value="JPM">JPMorgan Chase</option>
+                    <option value="V">Visa</option>
+                    <option value="PG">Procter & Gamble</option>
+                    <option value="SBUX">Starbucks</option>
+                    <option value="COST">Costco</option>
+                    <option value="PEP">PepsiCo</option>
+                    <option value="CMCSA">Comcast</option>
+                    <option value="MAR">Marriott International</option>
+                    <option value="BKNG">Booking Holdings</option>
+                    <option value="DLTR">Dollar Tree</option>
+                    <option value="AVGO">Broadcom</option>
+                    <option value="TMUS">T-Mobile US</option>
+                    <option value="KHC">Kraft Heinz</option>
+                </select>
         <label htmlFor="limit">Limit:</label>
         <input type="number" id="limit" name="limit" required />
         <button type="submit">Fetch Articles</button>
@@ -52,4 +73,4 @@ const NewsComponent = () => {
   );
 };
 
-export default NewsComponent;
+export default Article;

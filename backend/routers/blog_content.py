@@ -9,7 +9,6 @@ from .models import BlogContent, token_model
 
 router = APIRouter(prefix="/blog")
 
-# the token auth not working here
 
 
 @router.get("/content")
