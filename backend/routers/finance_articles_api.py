@@ -2,7 +2,7 @@ import requests
 from fastapi import APIRouter, Request
 
 from .models import Articles
-from .limiter import limiter
+
 
 
 router = APIRouter(prefix="/news")
@@ -18,4 +18,3 @@ def get_articles(request: Request, arti: Articles):
     return data
 
 
-# "articles""date""title""content""link"
