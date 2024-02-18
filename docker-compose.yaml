@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    environment:
+      - DATABASE_URL=postgresql://username:password@database:5432/db_name
+    networks:
+      - app-network
+
+  database:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=db_name
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  frontend:
+    # Define your frontend service here
+    # Replace this section with your actual frontend service configuration
+    # Example:
+    # build: ./frontend
+    # ports:
+    #   - "3000:3000"
+    # Depends_on:
+    #   - backend
+    # networks:
+    #   - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  pgdata:
