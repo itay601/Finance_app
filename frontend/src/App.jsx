@@ -23,6 +23,12 @@ const App = () =>{
       <Route path="/calculators/savings_calculator"  element={<SavingsCalculator/>} />
       <Route path="/calculators/retirement_planner"  element={<RetirementPlanner/>} />
       <Route path="/news/article"  element={<Article/>} />
+      
+      <Route path="/blog/content"  element={<AllBlog/>} />
+      <Route path="/blog/create_post"  element={<InsertPost/>} />
+      <Route path="/stocks/real_time"  element={<AllBlog/>} />
+      <Route path="/stocks/bursa_close"  element={<InsertPost/>} />
+      <Route path="/users/reset_password"  element={<UserRegister/>} />
     </Routes>
   </Router>
   </div>

@@ -4,6 +4,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
+from argon2 import PasswordHasher
+
 
 
 def generate_random_password(length=12):
@@ -30,8 +32,10 @@ def send_email(receiver_email, subject, body):
             server.login(sender_email, sender_password)
             server.sendmail(sender_email, receiver_email, message.as_string())
         print("Email sent successfully")
+        return("Email sent successfully")
     except smtplib.SMTPException as e:
         print(f"Failed to send email: {e}")
+        return(f"Failed to send email: {e}")
 
 
 def reset_password_and_send_email(email):
@@ -56,19 +60,21 @@ def reset_password_and_send_email(email):
             sql_select_user = "SELECT * FROM user WHERE email=%s"
             cursor.execute(sql_select_user, (email,))
             user_data = cursor.fetchone()
+            
 
             if user_data:
                 # Generate a new random password
                 new_password = generate_random_password()
-                hash = ph.hash(new_password)
-                print(hash)
-                ph.verify(hash, new_password)
-                ph.check_needs_rehash(hash)
+                ph =PasswordHasher()
+                hash_ = ph.hash(new_password)
+                print(hash_)
+                ph.verify(hash_, new_password)
+                ph.check_needs_rehash(hash_)
                 username = user_data["username"]
 
                 # Update the user's password in the database
                 sql_update_password = "UPDATE user SET password=%s WHERE username=%s"
-                cursor.execute(sql_update_password, (hash, username))
+                cursor.execute(sql_update_password, (hash_, username))
 
                 # Send the new password to the user's email
                 receiver_email = user_data["email"]
@@ -79,7 +85,7 @@ def reset_password_and_send_email(email):
                 print(
                     "Password reset successfully. Check your email for the new password."
                 )
-                return 1
+                return "Password reset successfully"
             else:
                 print("User not found.")
 
@@ -88,3 +94,5 @@ def reset_password_and_send_email(email):
 
     finally:
         connection.close()
+        
+    

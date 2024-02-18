@@ -9,7 +9,6 @@ from json import JSONEncoder
 
 # from my project
 from .models import *
-from core.login import *
 from core.register import *
 from core.forgot_pass import reset_password_and_send_email
 
@@ -34,9 +33,11 @@ def register(request: Request, req: req_create_user):
 
 #change it to rest password with email
 @router.post("/reset_password")
-async def protect(request: Request, token: Annotated[str, Depends(token_model)]):
-    print(token)
-    valid = validate_token(token.password)
-    if valid == None:
-        return Message(msg="token works")
-    return Message(msg="something happend")
+async def protect(request: Request,mail:Email):
+    result = reset_password_and_send_email(mail.Email)
+    if result:
+        return{"message":result}
+    else:
+        return{"message":"wrong Email , try again"}
+    
+    
