@@ -3,7 +3,7 @@ from typing import Annotated
 from fastapi import APIRouter, Request
 from fastapi.encoders import jsonable_encoder
 
-from backend.core.post_content import show_blog_db, insert_post_to_blog
+from core.post_content import show_blog_db, insert_post_to_blog
 from .models import BlogContent, token_model
 
 
@@ -14,6 +14,7 @@ router = APIRouter(prefix="/blog")
 @router.get("/content")
 async def content_blog(request: Request):
     blog = show_blog_db()
+    print(blog)
     blog_content = jsonable_encoder(blog)
     return {"content": blog_content}
 

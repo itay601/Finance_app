@@ -58,11 +58,9 @@ def show_blog_db():
         with connection.cursor() as cursor:
             # Check if the username and password match a user in the database
             sql = "SELECT * FROM blog_posts"
-            cursor.execute(
-                sql,
-            )
+            cursor.execute(sql)
 
-            blog_content = cursor.fetchone()
+            blog_content = cursor.fetchall()
             print(blog_content)
 
             if blog_content:
@@ -76,3 +74,6 @@ def show_blog_db():
 
     finally:
         connection.close()
+
+
+show_blog_db()
