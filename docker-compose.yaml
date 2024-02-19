@@ -1,48 +1,32 @@
-## fixiing!!!!!!!!!!!!1
-
 version: '3.8'
 
 services:
-  backend:
-    build: 
-         context: ./backend
-         dockerfile: Dockerfile
-        
+  backend: 
+    image: backend-fin
     ports:
       - "8000:8000"
     depends_on:
       - database
     environment:
-      - DATABASE_URL=mysql+pymysql://root:my-secret-pw@database:3456/USERS
+      - DATABASE_URL=mysql+pymysql://root:root@database:3306/USERS
     networks:
       - app-network
 
 
   database:
-  
-    image: csdb:Dockerfile1.0
+    image: blog
     restart: always
     ports:
-      - 3456:80
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: USERS
     networks:
       - app-network
       
 networks:
   app-network:
-    #driver: bridge
+    driver: bridge
 
 volumes:
   mysqldata:
-
-  #frontend:
-    # Define your frontend service here
-    # Replace this section with your actual frontend service configuration
-    # Example:
-    # build: ./frontend
-    # ports:
-    #   - "3000:3000"
-    # Depends_on:
-    #   - backend
-    # networks:
-    #   - app-network
-
