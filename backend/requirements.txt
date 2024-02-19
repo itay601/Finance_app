@@ -12,7 +12,7 @@ PyMySQL==1.1.0
 
 routers==0.10.1
 
-argon2-cffi         ==   23.1.0
+argon2-cffi  ==   23.1.0
 
 argon2-cffi-bindings  == 21.2.0
 
@@ -30,5 +30,10 @@ pandas==2.2.0
 
 SQLAlchemy==2.0.25
 
+typing_extensions == 4.9.0
+
+orjson == 3.9.10
+
+ujson == 5.9.0
 
 

@@ -9,8 +9,8 @@ from json import JSONEncoder
 
 # from my project
 from .models import *
-from core.register import *
-from core.forgot_pass import reset_password_and_send_email
+from backend.core.register import *
+from backend.core.forgot_pass import reset_password_and_send_email
 
 # for protected route users
 
