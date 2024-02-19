@@ -1,33 +1,40 @@
+## fixiing!!!!!!!!!!!!1
+
 version: '3.8'
 
 services:
   backend:
     build: 
-      context: .
-      dockerfile: Dockerfile
+         context: ./backend
+         dockerfile: Dockerfile
+        
     ports:
       - "8000:8000"
     depends_on:
       - database
     environment:
-      - DATABASE_URL=postgresql://username:password@database:5432/db_name
+      - DATABASE_URL=mysql+pymysql://root:my-secret-pw@database:3456/USERS
     networks:
       - app-network
+
 
   database:
-    image: postgres:latest
+  
+    image: csdb:Dockerfile1.0
+    restart: always
     ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_DB=db_name
-      - POSTGRES_USER=username
-      - POSTGRES_PASSWORD=password
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+      - 3456:80
     networks:
       - app-network
+      
+networks:
+  app-network:
+    #driver: bridge
 
-  frontend:
+volumes:
+  mysqldata:
+
+  #frontend:
     # Define your frontend service here
     # Replace this section with your actual frontend service configuration
     # Example:
@@ -39,9 +46,3 @@ services:
     # networks:
     #   - app-network
 
-networks:
-  app-network:
-    driver: bridge
-
-volumes:
-  pgdata:
