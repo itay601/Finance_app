@@ -7,7 +7,7 @@ import SavingsCalculator from './components/Savings_calc'
 import RetirementPlanner from './components/Retirment_calc'
 import Article from './components/Ariticle';
 import BlogContent from './components/Blog_content';
-
+import CreateBlog from './components/CreateBlog';
 
 
 const App = () =>{
@@ -22,12 +22,11 @@ const App = () =>{
       <Route path="/calculators/loan_calculator"  element={<Loan/>} />
       <Route path="/calculators/savings_calculator"  element={<SavingsCalculator/>} />
       <Route path="/calculators/retirement_planner"  element={<RetirementPlanner/>} />
-      
-      
       <Route path="/blog/content"  element={<BlogContent/>} />
       
       
-      <Route path="/blog/create_post"  element={<Loan/>} />
+      <Route path="/blog/create_post"  element={<CreateBlog/>} />
+      
       <Route path="/stocks/real_time"  element={<Loan/>} />
       <Route path="/stocks/bursa_close"  element={<Loan/>} />
       <Route path="/users/reset_password"  element={<UserRegister/>} />
