@@ -6,10 +6,9 @@ import Loan from './components/Loan_calculator';
 import SavingsCalculator from './components/Savings_calc'
 import RetirementPlanner from './components/Retirment_calc'
 import Article from './components/Ariticle';
-//import Index from './pages/Index'
-//import Calculators from './pages/Calculators';
+import BlogContent from './components/Blog_content';
 
-//<Route path="/"  element={<Index/>} />
+
 
 const App = () =>{
 
@@ -19,15 +18,18 @@ const App = () =>{
     <Routes>
       <Route path="/" element={<Root/>} />
       <Route path="/users/register"  element={<UserRegister/>} />
+      <Route path="/news/article"  element={<Article/>} />
       <Route path="/calculators/loan_calculator"  element={<Loan/>} />
       <Route path="/calculators/savings_calculator"  element={<SavingsCalculator/>} />
       <Route path="/calculators/retirement_planner"  element={<RetirementPlanner/>} />
-      <Route path="/news/article"  element={<Article/>} />
       
-      <Route path="/blog/content"  element={<AllBlog/>} />
-      <Route path="/blog/create_post"  element={<InsertPost/>} />
-      <Route path="/stocks/real_time"  element={<AllBlog/>} />
-      <Route path="/stocks/bursa_close"  element={<InsertPost/>} />
+      
+      <Route path="/blog/content"  element={<BlogContent/>} />
+      
+      
+      <Route path="/blog/create_post"  element={<Loan/>} />
+      <Route path="/stocks/real_time"  element={<Loan/>} />
+      <Route path="/stocks/bursa_close"  element={<Loan/>} />
       <Route path="/users/reset_password"  element={<UserRegister/>} />
     </Routes>
   </Router>

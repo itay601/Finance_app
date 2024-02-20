@@ -4,7 +4,7 @@ from fastapi import APIRouter, Request
 from fastapi.encoders import jsonable_encoder
 
 from core.post_content import show_blog_db, insert_post_to_blog
-from .models import BlogContent, token_model
+from .models import BlogContent
 
 
 router = APIRouter(prefix="/blog")
