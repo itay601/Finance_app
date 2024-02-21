@@ -13,7 +13,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "8000:8000"
     depends_on:
       - database
 
@@ -22,6 +22,6 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "3000:3000"
     depends_on:
       - backend

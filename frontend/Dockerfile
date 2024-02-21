@@ -1,5 +1,5 @@
-# Use the official Node.js 14 image as a base image
-FROM node:14-alpine as build
+# Use the official Node.js 18 image as a base image
+FROM node:18-alpine as build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -14,6 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the React app
+RUN npm install @babel/plugin-proposal-private-property-in-object
 RUN npm run build
 
 # Use nginx as a base image for serving static files
@@ -23,7 +24,7 @@ FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80 to the outside world
-EXPOSE 80
+EXPOSE 3000
 
 # Command to run nginx
 CMD ["nginx", "-g", "daemon off;"]
