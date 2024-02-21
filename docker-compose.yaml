@@ -1,18 +1,27 @@
-version: "3.8"
+version: '3.8'
 
 services:
+  database:
+    build:
+      context: ./sql
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "5000:5000"
     depends_on:
       - database
- 
- 
-  database:
-       build:
-         context: ./sql
-       ports:
-         - "3306:3306" 
-      # command: ["mysqld", "--plugin-load=itay"]     
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
