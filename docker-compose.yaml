@@ -6,7 +6,7 @@ services:
       context: ./sql
       dockerfile: Dockerfile
     ports:
-      - "3306:3306"
+      - "3456:3456"
 
   backend:
     build:
