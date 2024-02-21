@@ -24,7 +24,7 @@ FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80 to the outside world
-EXPOSE 3000
+EXPOSE 8501
 
 # Command to run nginx
 CMD ["nginx", "-g", "daemon off;"]
