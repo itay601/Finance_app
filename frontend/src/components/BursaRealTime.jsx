@@ -1,32 +1,35 @@
 import React, { useState } from "react";
 
-const BursaClose = () => {
-    const [message, setMessage] = useState("");
+const BursaRealTime = () => {
+    const [stockData, setStockData] = useState([]);
     const [selectedCompany, setSelectedCompany] = useState("AAPL"); // Default value
 
-    const getCloseMessage = async () => {
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ stock_: selectedCompany }),
-        };
-        const response = await fetch('/stocks/bursa_close', requestOptions);
-        const data = await response.json();
-        console.log(response)
-        console.log(data)
-        
-
-        if (!response.ok) {
-            console.log("Error fetching data from backend");
-        } else {
-            setMessage(data);
+    const getStockData = async () => {
+        try {
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ stock_: selectedCompany }),
+            };
+            const response = await fetch('/stocks/real_time', requestOptions);
+            const data = await response.json();
+            console.log(response)
+            console.log(data)
+            
+            if (!response.ok) {
+                console.log("Error fetching data from backend");
+            } else {
+                setStockData(data);
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
     };
 
     const handleFetchClick = () => {
-        getCloseMessage();
+        getStockData();
     };
 
     const handleCompanyChange = (e) => {
@@ -35,7 +38,7 @@ const BursaClose = () => {
 
     return (
         <div>
-            <h1>Bursa Close - Message from Backend: {message}</h1>
+            <h1>Bursa Real-Time</h1>
             <label htmlFor="company">Choose a Company:</label>
             <select id="company" name="company" value={selectedCompany} onChange={handleCompanyChange}>
                 <option value="AAPL">Apple</option>
@@ -60,10 +63,25 @@ const BursaClose = () => {
                 <option value="KHC">Kraft Heinz</option>
             </select>
             <button type="button" onClick={handleFetchClick}>Fetch bursa close</button>
-           
+            <div>
+                <h2>NASDAQ Data</h2>
+                {stockData.map((stock, index) => (
+                    <div key={index}>
+                        <h3>Code: {stock.code}</h3>
+                        <p>Timestamp: {stock.timestamp}</p>
+                        <p>Open: {stock.open}</p>
+                        <p>High: {stock.high}</p>
+                        <p>Low: {stock.low}</p>
+                        <p>Close: {stock.close}</p>
+                        <p>Volume: {stock.volume}</p>
+                        <p>Previous Close: {stock.previousClose}</p>
+                        <p>Change: {stock.change}</p>
+                        <p>Change Percentage: {stock.change_p}</p>
+                    </div>
+                ))}
+            </div>
         </div>
-        
     );
 };
 
-export default BursaClose;
+export default BursaRealTime;

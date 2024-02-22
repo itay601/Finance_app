@@ -10,7 +10,7 @@ import CreateBlog from './components/CreateBlog';
 import ResetPass from './components/ResetPass';
 import UserRegistrationForm from './components/Register'
 import BursaClose from './components/BursaClose'
-
+import BursaRealTime from './components/BursaRealTime';
 
 
 
@@ -29,15 +29,9 @@ const App = () =>{
       <Route path="/blog/create_post"  element={<CreateBlog/>} />
       <Route path="/users/register"  element={<UserRegistrationForm/>} />
       <Route path="/users/reset_password"  element={<ResetPass/>} />
-
-
-
       <Route path="/stocks/bursa_close"  element={<BursaClose/>} />
 
-      <Route path="/stocks/real_time"  element={<Loan/>} />
-      
-      
-     
+      <Route path="/stocks/real_time"  element={<BursaRealTime/>} />
      
     </Routes>
   </Router>
