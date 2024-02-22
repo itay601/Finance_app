@@ -1,41 +1,49 @@
-import React, { useEffect, useState } from "react";
-
-
+import React, { useState } from 'react';
 
 const ResetPass = () => {
-    const [message, setMessage] = useState("");
+  const [Email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-    const getRootMessage = async () => {
-        const requestOptions = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-        const response = await fetch("/users/register", requestOptions);
-        const data = await response.json();
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  };
 
-        console.log(data)
-        console.log(response)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ Email })
+      };
+      console.log({Email})
 
-        if (response.ok !== true) {
-            console.log("mess-up");
-        } else {
-            console.log(data.message)
-            setMessage(data.message);
-            
-        }
-    };
+      const response = await fetch('/users/reset_password', requestOptions);
+      const data = await response.json();
+      console.log(response)
+      console.log(data)
+      
 
-    useEffect(() => {
-        getRootMessage();
-    }, []);
+      setMessage(data.message); // Set the message from the response
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
-    return (
-        <div>
-            <h1>register successfully , {message}</h1>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Reset Password</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email:</label>
+        <input type="email" id="email" name="email" value={Email} onChange={handleChange} />
+
+        <button type="submit">Reset Password</button>
+      </form>
+      {message && <p>{message}</p>} {/* Display the message if it's available */}
+    </div>
+  );
 };
 
 export default ResetPass;

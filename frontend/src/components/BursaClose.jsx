@@ -2,28 +2,23 @@ import React, { useEffect, useState } from "react";
 
 
 
-const UserRegister = () => {
+const BursaClose = () => {
     const [message, setMessage] = useState("");
 
     const getRootMessage = async () => {
         const requestOptions = {
             method: "GET",
             headers: {
-                "Content-Type": "application/json",
+                "Conten-Type": "application/json",
             },
         };
-        const response = await fetch("/users/register", requestOptions);
+        const response = await fetch("/root", requestOptions);
         const data = await response.json();
 
-        console.log(data)
-        console.log(response)
-
-        if (response.ok !== true) {
+        if (!response.ok) {
             console.log("mess-up");
         } else {
-            console.log(data.message)
             setMessage(data.message);
-            
         }
     };
 
@@ -33,9 +28,8 @@ const UserRegister = () => {
 
     return (
         <div>
-            <h1>register successfully , {message}</h1>
+            <h1>Root, message from backend:  {message}</h1>
         </div>
     );
 };
-
-export default UserRegister;
+export default BursaClose;

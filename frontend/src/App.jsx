@@ -9,6 +9,9 @@ import BlogContent from './components/Blog_content';
 import CreateBlog from './components/CreateBlog';
 import ResetPass from './components/ResetPass';
 import UserRegistrationForm from './components/Register'
+import BursaClose from './components/BursaClose'
+
+
 
 
 const App = () =>{
@@ -24,13 +27,17 @@ const App = () =>{
       <Route path="/calculators/retirement_planner"  element={<RetirementPlanner/>} />
       <Route path="/blog/content"  element={<BlogContent/>} />
       <Route path="/blog/create_post"  element={<CreateBlog/>} />
-      
-      <Route path="/users/reset_password"  element={<ResetPass/>} />
-      
       <Route path="/users/register"  element={<UserRegistrationForm/>} />
+      <Route path="/users/reset_password"  element={<ResetPass/>} />
+
+
+
+      <Route path="/stocks/bursa_close"  element={<BursaClose/>} />
 
       <Route path="/stocks/real_time"  element={<Loan/>} />
-      <Route path="/stocks/bursa_close"  element={<Loan/>} />
+      
+      
+     
      
     </Routes>
   </Router>
