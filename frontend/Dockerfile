@@ -20,9 +20,7 @@ RUN npm run build
 
 # Use nginx as a base image for serving static files
 FROM nginx:alpine
-#############################################################################################################
-COPY default.conf /frontend/default.conf
-##########################################################################################################3
+
 # Copy the built app from the build stage to the nginx directory
 COPY --from=build /app/build /usr/share/nginx/html
 
