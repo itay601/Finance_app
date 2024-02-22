@@ -27,10 +27,10 @@ def register_new_user(id_,username, email, pWord):
     connection = connect_to_db()
     try:
         with connection.cursor() as cursor:
-            ph = PasswordHasher()
-            passHash = ph.hash(pWord)
+            #ph = PasswordHasher()
+            #passHash = ph.hash(pWord)
             sql = "INSERT INTO user (id, username, email, password) VALUES (%s, %s, %s, %s)"
-            values = (id_,username, email, passHash)
+            values = (id_,username, email, pWord)
             cursor.execute(sql, values)
         # Commit the changes to the database
         connection.commit()
