@@ -6,6 +6,6 @@ COPY ./db_user.sql  ./docker-entrypoint-initdb.d/
 
 RUN pip3 install pymysql
 
-EXPOSE 80
+EXPOSE 3456
 
 CMD ["mysqld"]
