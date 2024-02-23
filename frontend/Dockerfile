@@ -1,5 +1,5 @@
 # Use the official Node.js 18 image as a base image
-FROM node:18-alpine as build
+FROM node:current-alpine3.18 as build
 
 # Set the working directory in the container
 WORKDIR /app
