@@ -2,7 +2,7 @@
 FROM node:current-alpine3.18 as build
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /frontend
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
@@ -13,19 +13,8 @@ RUN npm install
 # Copy the entire project directory to the working directory
 COPY . .
 
-# Build the React app
-RUN npm install @babel/plugin-proposal-private-property-in-object
-#RUN npm ci
-RUN npm run build
-
-# Use nginx as a base image for serving static files
-FROM nginx:alpine
-
-# Copy the built app from the build stage to the nginx directory
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Expose port 80 to the outside world
+# Expose port 3000 for the development server
 EXPOSE 3000
 
-# Command to run nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Command to start the development server
+CMD ["npm", "start"]

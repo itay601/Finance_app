@@ -39,7 +39,7 @@ def insert_post_to_blog(name, title, body):
 
 
 def show_blog_db():
-    host = "127.0.0.1"
+    host = "database"
     user = "root"
     password = "root"
     dbname = "USERS"
