@@ -6,18 +6,20 @@ from argon2 import PasswordHasher
 
 
 def connect_to_db():
-    host = '127.0.0.1'
-    user = 'root'
-    password = 'my-secret-pw'
-    dbname = 'USERS'
+    host = "database"
+    user = "root"
+    password = "root"
+    dbname = "USERS"
 
     # Connect to the database
-    connection = pymysql.connect(host=host,
-                                user=user,
-                                password=password,
-                                database=dbname,
-                                port=3456,
-                                cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(
+        host=host,
+        user=user,
+        password=password,
+        database=dbname,
+        port=3306,
+        cursorclass=pymysql.cursors.DictCursor,
+    )
     
     return connection
 

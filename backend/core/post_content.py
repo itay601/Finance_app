@@ -3,9 +3,9 @@ import pymysql
 
 
 def insert_post_to_blog(name, title, body):
-    host = "127.0.0.1"
+    host = "database"
     user = "root"
-    password = "my-secret-pw"
+    password = "root"
     dbname = "USERS"
 
     # Connect to the database
@@ -14,7 +14,7 @@ def insert_post_to_blog(name, title, body):
         user=user,
         password=password,
         database=dbname,
-        port=3456,
+        port=3306,
         cursorclass=pymysql.cursors.DictCursor,
     )
 
@@ -36,6 +36,11 @@ def insert_post_to_blog(name, title, body):
 
     finally:
         connection.close()
+
+
+
+
+
 
 
 def show_blog_db():
@@ -76,4 +81,3 @@ def show_blog_db():
         connection.close()
 
 
-#show_blog_db()

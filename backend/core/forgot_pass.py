@@ -39,9 +39,9 @@ def send_email(receiver_email, subject, body):
 
 
 def reset_password_and_send_email(email):
-    host = "127.0.0.1"
+    host = "database"
     user = "root"
-    password = "my-secret-pw"
+    password = "root"
     dbname = "USERS"
 
     # Connect to the database
@@ -50,7 +50,7 @@ def reset_password_and_send_email(email):
         user=user,
         password=password,
         database=dbname,
-        port=3456,
+        port=3306,
         cursorclass=pymysql.cursors.DictCursor,
     )
 
