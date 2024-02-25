@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from backend.routers.users import router 
+from backend.routers.users import router
 
 client = TestClient(router)
 
@@ -9,13 +9,11 @@ def test_register_user():
         "id_": 123,
         "username": "test_user",
         "email": "test@example.com",
-        "password": "testpassword"
+        "password": "testpassword",
     }
     response = client.post("/users/register", json=user_data)
     assert response.status_code == 200
     assert response.json()["msg"] == "not register try again."
-
-
 
 
 def test_reset_password():

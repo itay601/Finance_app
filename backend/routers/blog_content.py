@@ -10,7 +10,6 @@ from .models import BlogContent
 router = APIRouter(prefix="/blog")
 
 
-
 @router.get("/content")
 async def content_blog(request: Request):
     blog = show_blog_db()

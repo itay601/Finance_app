@@ -15,12 +15,9 @@ app.include_router(stock_router)
 app.include_router(cal_router)
 
 
-
-
 @app.get("/")
 async def index():
     return {"message": "server is running"}
-
 
 
 @app.get("/root")

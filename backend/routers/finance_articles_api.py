@@ -4,7 +4,6 @@ from fastapi import APIRouter, Request
 from .models import Articles
 
 
-
 router = APIRouter(prefix="/news")
 
 YOUR_API_TOKEN = "65c223a456a3f2.38480002"
@@ -16,5 +15,3 @@ def get_articles(request: Request, arti: Articles):
     data = requests.get(url).json()
     print(data)
     return data
-
-

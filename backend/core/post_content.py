@@ -38,11 +38,6 @@ def insert_post_to_blog(name, title, body):
         connection.close()
 
 
-
-
-
-
-
 def show_blog_db():
     host = "database"
     user = "root"
@@ -79,5 +74,3 @@ def show_blog_db():
 
     finally:
         connection.close()
-
-

@@ -1,6 +1,8 @@
 import pytest
 from fastapi.testclient import TestClient
-from backend.routers.finance_articles_api import router  # Assuming your FastAPI application instance is named 'app'
+from backend.routers.finance_articles_api import (
+    router,
+)  # Assuming your FastAPI application instance is named 'app'
 from backend.routers.models import Articles
 
 client = TestClient(router)

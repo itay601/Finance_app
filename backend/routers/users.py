@@ -20,7 +20,6 @@ router = APIRouter(prefix="/users")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/register")
 
 
-
 @router.post("/register")
 def register(request: Request, req: req_create_user):
     register_check = None
@@ -31,13 +30,11 @@ def register(request: Request, req: req_create_user):
         return {"msg": "not register try again."}
 
 
-#change it to rest password with email
+# change it to rest password with email
 @router.post("/reset_password")
-async def protect(request: Request,mail:Email):
+async def protect(request: Request, mail: Email):
     result = reset_password_and_send_email(mail.Email)
     if result:
-        return{"message":result}
+        return {"message": result}
     else:
-        return{"message":"wrong Email , try again"}
-    
-    
+        return {"message": "wrong Email , try again"}

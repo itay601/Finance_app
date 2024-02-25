@@ -4,8 +4,11 @@ from fastapi.params import Depends
 from typing import Optional
 from typing import List
 
+
 class Email(BaseModel):
-    Email:str
+    Email: str
+
+
 # RESPONSES
 # massages responses
 class Message(BaseModel):
