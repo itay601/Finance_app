@@ -8,7 +8,7 @@ Simple Finance App/web application on 3 docker containers and API service:
 
 
 # video
-[Youtube Link]()
+[Youtube Link](https://www.youtube.com/watch?v=2TaWg8yDvB4)
 
 
 #  instalation [bash]
